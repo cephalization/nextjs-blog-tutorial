@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { getSortedPostsData } from "../lib/posts";
+import { getSortedPostsData, PostMeta } from "../lib/posts";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }: { allPostsData: PostMeta[] }) {
   return (
     <Layout home>
       <Head>
