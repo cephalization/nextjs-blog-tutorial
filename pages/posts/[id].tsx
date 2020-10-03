@@ -1,10 +1,15 @@
 import Layout from "../../components/layout";
-import { getAllPostIds, getPostData, Post, PostParams } from "../../lib/posts";
+import {
+  getAllPostIds,
+  getPostData,
+  Post as PostType,
+  PostParams,
+} from "../../lib/posts";
 import Head from "next/head";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 
-export default function Post({ postData }: { postData: Post }) {
+export default function Post({ postData }: { postData: PostType }) {
   return (
     <Layout>
       <Head>
