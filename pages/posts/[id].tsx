@@ -8,8 +8,9 @@ import {
 import Head from "next/head";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
+import { GetStaticPathsResult } from "next";
 
-export default function Post({ postData }: { postData: PostType }) {
+export default function Post({ postData }: { postData: PostType }) : React.ReactElement {
   return (
     <Layout>
       <Head>
@@ -26,7 +27,7 @@ export default function Post({ postData }: { postData: PostType }) {
   );
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   const paths = getAllPostIds();
   return {
     paths,
@@ -34,7 +35,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: PostParams) {
+export async function getStaticProps({ params }: PostParams): Promise<{props: {postData: PostType}}> {
   const postData = await getPostData(params.id);
   return {
     props: {
